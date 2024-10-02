@@ -1,0 +1,793 @@
+Classes
+In Java, classes are blueprints for creating objects. They define the structure and behavior (attributes and methods) that the objects created from the class will have. A class can contain fields (variables) and methods (functions) to describe the properties and actions of the objects.
+
+Key Concepts of Classes in Java:
+
+1. Class Definition: A class is defined using the class keyword. Here's a simple example:
+
+class Car {
+    // Fields (attributes)
+    String model;
+    int year;
+
+    // Constructor
+    Car(String model, int year) {
+        this.model = model;
+        this.year = year;
+    }
+
+    // Method (behavior)
+    void displayInfo() {
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+}
+
+
+2. Objects: Objects are instances of a class. They are created using the new keyword.
+
+Car myCar = new Car("Toyota", 2022);
+myCar.displayInfo();
+
+
+3. Fields (Attributes): Fields (or attributes) define the data associated with the class. In the Car class above, model and year are fields.
+
+
+4. Methods: Methods define the actions or behaviors that the class's objects can perform. The displayInfo method is an example of a method that prints the car’s details.
+
+
+5. Constructors: Constructors are special methods used to initialize objects. In the Car class, the constructor accepts parameters and sets the field values when an object is created.
+
+
+6. Access Modifiers: You can control the visibility of class members (fields and methods) using access modifiers:
+
+public: Accessible from anywhere.
+
+private: Accessible only within the class.
+
+protected: Accessible within the package and by subclasses.
+
+
+
+7. Inheritance: Classes can inherit properties and methods from other classes using the extends keyword. This allows code reuse.
+
+
+8. Encapsulation: Encapsulation is the bundling of data (fields) and methods that operate on the data within one unit, and restricting the access to some of the object's components. This is often achieved using access modifiers and getter/setter methods.
+
+
+
+Classes are a fundamental part of Java’s object-oriented programming (OOP) structure, allowing for modular, reusable, and organized code.
+
+Arrow functions
+
+Java does not have arrow functions in the same way JavaScript does. However, Java provides a similar concept known as lambda expressions that were introduced in Java 8. Lambda expressions in Java are a concise way of expressing instances of functional interfaces, providing a shorthand syntax for writing anonymous functions (inline implementations of methods).
+
+Lambda Expression Syntax (similar to arrow functions in JavaScript):
+
+(parameters) -> expression
+(parameters) -> { statements }
+
+Example of Lambda Expression in Java:
+
+1. Without Parameters:
+
+Runnable runnable = () -> System.out.println("Hello, Lambda!");
+runnable.run();
+
+
+2. With Parameters:
+
+// Functional interface with one abstract method
+interface MathOperation {
+    int operation(int a, int b);
+}
+
+// Lambda expression implementing the interface method
+MathOperation addition = (a, b) -> a + b;
+System.out.println("Addition: " + addition.operation(5, 3));
+
+
+3. With Block of Statements:
+
+MathOperation multiplication = (a, b) -> {
+    System.out.println("Multiplying " + a + " and " + b);
+    return a * b;
+};
+System.out.println("Multiplication: " + multiplication.operation(4, 6));
+
+
+
+Key Features of Lambda Expressions:
+
+1. Functional Interfaces: Lambda expressions can only be used where there is a functional interface, which is an interface with only one abstract method (like Runnable, Comparator, or custom interfaces).
+
+Example of a functional interface:
+
+@FunctionalInterface
+interface GreetingService {
+    void sayMessage(String message);
+}
+
+
+2. Type Inference: The type of parameters can often be inferred by the compiler, so you don't need to explicitly specify parameter types in many cases:
+
+MathOperation subtraction = (a, b) -> a - b;
+
+
+3. Simpler Syntax: Lambda expressions simplify the syntax for defining anonymous classes or single-method interfaces.
+
+
+
+Functional Interfaces in Java:
+
+Some commonly used functional interfaces in Java are:
+
+Runnable: Takes no arguments and returns nothing.
+
+Supplier<T>: Takes no arguments and returns a value of type T.
+
+Consumer<T>: Takes a value of type T and returns nothing.
+
+Function<T, R>: Takes a value of type T and returns a value of type R.
+
+Predicate<T>: Takes a value of type T and returns a boolean.
+
+
+Conclusion:
+
+While Java doesn’t have "arrow functions" per se, lambda expressions serve a similar role by providing concise function definitions that resemble the behavior of JavaScript's arrow functions. They are used primarily for functional programming and simplifying code when working with interfaces with single methods.
+
+Variables( let, const,var)
+
+In Java, variables are containers that store data values. Each variable has a data type that determines the kind of values it can hold and the operations that can be performed on them.
+
+Types of Variables in Java:
+
+Java has three main types of variables, classified based on their scope and lifetime:
+
+1. Local Variables:
+
+Declared inside a method, constructor, or block.
+
+Only accessible within that method or block.
+
+Must be initialized before use.
+
+They are destroyed once the method or block is finished executing.
+
+
+Example:
+
+public void displayNumber() {
+    int number = 10; // Local variable
+    System.out.println(number);
+}
+
+
+2. Instance Variables (Non-static fields):
+
+Declared inside a class, but outside any method, constructor, or block.
+
+Each object of the class has its own copy of the instance variables.
+
+They are created when an object is instantiated and destroyed when the object is destroyed.
+
+They have default values (e.g., null for objects, 0 for numbers) if not explicitly initialized.
+
+
+Example:
+
+class Car {
+    String model; // Instance variable
+    int year;     // Instance variable
+}
+
+
+3. Class Variables (Static fields):
+
+Declared with the static keyword inside a class.
+
+Shared among all instances of the class (i.e., there is only one copy of the variable for all objects).
+
+They are created when the class is loaded into memory and destroyed when the program terminates.
+
+
+Example:
+
+class Car {
+    static int wheels = 4; // Class variable
+}
+
+
+
+Variable Declaration and Initialization:
+
+In Java, variables must be declared with a type before use. Optionally, they can be initialized at the same time.
+
+Declaration:
+
+int age;         // Declaring an integer variable
+String name;     // Declaring a string variable
+
+Initialization:
+
+age = 25;        // Assigning a value to the variable
+name = "Alice";  // Assign
+
+Array methods
+In Java, arrays are objects that store multiple values of the same type. Although Java arrays do not have many built-in methods like some other languages (e.g., Python), Java provides a set of utilities in the java.util.Arrays class that offer useful methods for working with arrays. Additionally, arrays can be manipulated using loops and other control structures.
+
+Common Array Operations in Java
+
+1. Accessing Array Elements: You can access array elements using their index.
+
+int[] numbers = {1, 2, 3, 4, 5};
+System.out.println(numbers[0]); // Output: 1
+
+
+2. Modifying Array Elements: You can modify array elements by directly assigning new values.
+
+numbers[1] = 10; // Change second element to 10
+
+
+
+Common Methods from java.util.Arrays:
+
+The Arrays class provides many static methods for working with arrays. Here's an overview of some useful ones:
+
+1. Arrays.toString(array): Returns a string representation of the array.
+
+int[] numbers = {1, 2, 3, 4, 5};
+System.out.println(Arrays.toString(numbers)); // Output: [1, 2, 3, 4, 5]
+
+
+2. Arrays.sort(array): Sorts the elements of the array in ascending order.
+
+int[] numbers = {5, 1, 4, 2, 3};
+Arrays.sort(numbers);
+System.out.println(Arrays.toString(numbers)); // Output: [1, 2, 3, 4, 5]
+
+
+3. Arrays.binarySearch(array, value): Performs a binary search on the sorted array for the given value. Returns the index of the value, or a negative value if not found.
+
+int[] numbers = {1, 2, 3, 4, 5};
+int index = Arrays.binarySearch(numbers, 3); // Output: 2
+
+
+4. Arrays.equals(array1, array2): Checks if two arrays are equal (i.e., all elements in corresponding positions are the same).
+
+int[] arr1 = {1, 2, 3};
+int[] arr2 = {1, 2, 3};
+System.out.println(Arrays.equals(arr1, arr2)); // Output: true
+
+
+5. Arrays.fill(array, value): Fills the entire array with the specified value.
+
+int[] numbers = new int[5];
+Arrays.fill(numbers, 7); // Fill all elements with 7
+System.out.println(Arrays.toString(numbers)); // Output: [7, 7, 7, 7, 7]
+
+
+6. Arrays.copyOf(array, newLength): Copies the array into a new array of the specified length. If the new length is larger than the original array, the new elements are filled with default values (0 for numbers, null for objects).
+
+int[] numbers = {1, 2, 3};
+int[] newArray = Arrays.copyOf(numbers, 5);
+System.out.println(Arrays.toString(newArray)); // Output: [1, 2, 3, 0, 0]
+
+
+7. Arrays.copyOfRange(array, from, to): Copies a range of the array into a new array. The from index is inclusive, and the to index is exclusive.
+
+int[] numbers = {1, 2, 3, 4, 5};
+int[] newArray = Arrays.copyOfRange(numbers, 1, 4);
+System.out.println(Arrays.toString(newArray)); // Output: [2, 3, 4]
+
+
+8. Arrays.deepToString(array): Similar to Arrays.toString(), but works for multi-dimensional arrays.
+
+int[][] matrix = {{1, 2}, {3, 4}};
+System.out.println(Arrays.deepToString(matrix)); // Output: [[1, 2], [3, 4]]
+
+
+9. Arrays.deepEquals(array1, array2): Compares two multi-dimensional arrays for deep equality.
+
+int[][] matrix1 = {{1, 2}, {3, 4}};
+int[][] matrix2 = {{1, 2}, {3, 4}};
+System.out.println(Arrays.deepEquals(matrix1, matrix2)); // Output: true
+
+
+10. Arrays.mismatch(array1, array2): Returns the index of the first mismatch between two arrays, or -1 if the arrays are identical.
+
+int[] arr1 = {1, 2, 3};
+int[] arr2 = {1, 4, 3};
+System.out.println(Arrays.mismatch(arr1, arr2)); // Output: 1
+
+
+
+Looping through Arrays:
+
+Though not methods, loops are commonly used to traverse and manipulate arrays.
+
+1. For Loop:
+
+int[] numbers = {1, 2, 3, 4, 5};
+for (int i = 0; i < numbers.length; i++) {
+    System.out.println(numbers[i]);
+}
+
+
+2. Enhanced For Loop (for-each loop):
+
+int[] numbers = {1, 2, 3, 4, 5};
+for (int number : numbers) {
+    System.out.println(number);
+}
+
+
+
+Summary:
+
+While Java arrays are not as feature-rich as those in some other languages, the java.util.Arrays class provides many methods for sorting, searching, copying, and comparing arrays. For more complex operations, custom logic and looping constructs can be used.
+
+
+Destructiring
+
+In Java, destructuring as a direct feature (like in JavaScript or Python) does not exist. Destructuring refers to the ability to unpack elements from an array, object, or other data structures into distinct variables. However, Java provides alternative ways to achieve similar functionality, primarily through:
+
+1. Working with Arrays: Using indexed access or utility methods to extract values.
+
+
+2. Working with Objects: Using getters or methods to unpack object fields.
+
+
+3. Java Records: A new feature in Java 14+ (official in Java 16) that simplifies destructuring objects.
+
+
+
+1. Destructuring Arrays in Java
+
+Although Java doesn’t have direct destructuring, you can achieve it using indexed access. For example, to extract values from an array:
+
+int[] numbers = {1, 2, 3};
+
+// Extract individual values (manually unpacking)
+int first = numbers[0];
+int second = numbers[1];
+int third = numbers[2];
+
+System.out.println(first); // Output: 1
+System.out.println(second); // Output: 2
+System.out.println(third);  // Output: 3
+
+2. Destructuring Objects in Java
+
+Java doesn’t support destructuring objects like JavaScript does, but you can achieve a similar effect by using getter methods in your class:
+
+class Person {
+    private String name;
+    private int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person = new Person("John", 30);
+
+        // Destructuring manually using getters
+        String name = person.getName();
+        int age = person.getAge();
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+3. Destructuring with Java Records (Java 16+)
+
+Java records (introduced in Java 14 and finalized in Java 16) are a special kind of class that allows a more concise way to handle data-carrying objects. They come with built-in getter-like methods and can facilitate destructuring-like behavior.
+
+Here’s an example using a record to achieve destructuring:
+
+// Define a record
+public record Person(String name, int age) {}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a new Person record
+        Person person = new Person("John", 30);
+
+        // Destructuring-like behavior (unpacking fields)
+        String name = person.name();  // Automatically created getter
+        int age = person.age();       // Automatically created getter
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+In this case, the name() and age() methods are automatically generated by the record, which can be viewed as a form of destructuring because you extract the fields in a more concise way.
+
+4. Destructuring with Tuple-like Classes (Using Libraries)
+
+Java does not have a native tuple class like other languages (e.g., Python), but you can use third-party libraries like JavaTuples or Pair classes from libraries such as Apache Commons or JavaFX.
+
+Example with Pair from javafx.util.Pair:
+
+import javafx.util.Pair;
+
+public class Main {
+    public static void main(String[] args) {
+        Pair<String, Integer> person = new Pair<>("John", 30);
+
+        // Destructuring the pair
+        String name = person.getKey();
+        int age = person.getValue();
+
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+Summary:
+
+Arrays: Destructuring can be done manually by accessing elements via their index.
+
+Objects: Destructuring-like behavior can be achieved using getter methods or by directly accessing fields in simple objects.
+
+Records: Java 16 introduced records, which provide concise syntax for working with data objects and can facilitate a destructuring-like pattern.
+
+Tuples: Libraries like javafx.util.Pair or third-party libraries can provide tuple-like functionality for destructuring pairs or n-tuples.
+
+
+Though not as direct as destructuring in JavaScript or Python, these techniques allow you to achieve similar functionality in Java.
+
+Modules
+Modules in Java were introduced in Java 9 as part of the Java Platform Module System (JPMS), also known as Project Jigsaw. Modules allow you to better organize large applications and libraries by grouping related classes, interfaces, and packages. They are designed to improve the modularity, maintainability, and security of Java applications, and to reduce the size of the Java runtime environment.
+
+Key Concepts of Java Modules:
+
+1. Module: A module is a collection of related packages and resources. It explicitly declares its dependencies and the packages it makes available to other modules.
+
+
+2. module-info.java: This is the module descriptor file where a module’s dependencies and its publicly accessible parts are defined.
+
+
+3. Strong Encapsulation: With modules, Java offers more powerful encapsulation than just access modifiers. Only the packages that a module exports are accessible to other modules.
+
+
+
+Defining a Module:
+
+A module is defined by creating a module-info.java file at the root of the module’s directory. This file describes the module's name, dependencies, and which packages it exports.
+
+Example of module-info.java:
+
+module com.example.myapp {
+    // Exported packages accessible by other modules
+    exports com.example.myapp.services;
+
+    // Declaring dependencies on other modules
+    requires com.example.mylibrary;
+}
+
+module com.example.myapp: Declares the name of the module.
+
+exports: Specifies the packages that other modules can access. Only these packages are visible to other modules.
+
+requires: Declares the modules that this module depends on.
+
+
+Creating a Simple Java Module:
+
+Let’s break down how you would create a simple modular application.
+
+1. Define a Directory Structure for Modules:
+
+my-modular-app/
+├── myapp/
+│   ├── com/
+│   │   └── example/
+│   │       └── myapp/
+│   │           └── Main.java
+│   └── module-info.java
+├── mylibrary/
+│   ├── com/
+│   │   └── example/
+│   │       └── mylibrary/
+│   │           └── Library.java
+│   └── module-info.java
+
+2. module-info.java for mylibrary Module:
+
+module com.example.mylibrary {
+    // Exporting the package to be used by other modules
+    exports com.example.mylibrary;
+}
+
+3. Library.java in mylibrary Module:
+
+package com.example.mylibrary;
+
+public class Library {
+    public String getMessage() {
+        return "Hello from the Library!";
+    }
+}
+
+4. module-info.java for myapp Module:
+
+module com.example.myapp {
+    // This module requires the mylibrary module
+    requires com.example.mylibrary;
+}
+
+5. Main.java in myapp Module:
+
+package com.example.myapp;
+
+import com.example.mylibrary.Library;
+
+public class Main {
+    public static void main(String[] args) {
+        Library library = new Library();
+        System.out.println(library.getMessage());
+    }
+}
+
+6. Compiling and Running the Modular Application:
+
+To compile and run a modular Java application, you need to specify the module path.
+
+Compilation:
+
+javac -d out --module-source-path . $(find . -name "*.java")
+
+-d out: Specifies the output directory for compiled modules.
+
+--module-source-path .: Specifies the root directory containing the modules.
+
+$(find . -name "*.java"): Compiles all .java files recursively.
+
+
+Running the Application:
+
+java --module-path out -m com.example.myapp/com.example.myapp.Main
+
+--module-path out: Specifies the directory containing the compiled modules.
+
+-m com.example.myapp/com.example.myapp.Main: Specifies the module and the main class to run.
+
+
+Features and Benefits of Java Modules:
+
+1. Strong Encapsulation: Modules allow developers to control which parts of a module are accessible to other modules using the exports keyword. This is stronger than just using public access modifiers because only the explicitly exported packages are visible.
+
+
+2. Explicit Dependencies: Modules explicitly declare dependencies using the requires keyword. This improves clarity about which modules depend on which other modules.
+
+
+3. Reduced Footprint: The Java platform itself has been modularized, allowing you to create lightweight custom runtime images using tools like jlink. This reduces the memory footprint of applications by only including the required modules.
+
+
+4. Reliable Configuration: The module system detects missing or conflicting dependencies at compile-time or startup, leading to fewer runtime issues.
+
+
+5. Improved Maintainability: Breaking down large applications into modules improves maintainability and scalability. Each module can be developed and maintained independently.
+
+
+6. Services and provides/uses: The module system supports service loading mechanisms. A module can declare that it provides an implementation of a service, and other modules can declare that they use the service.
+
+module com.example.mylibrary {
+    exports com.example.mylibrary;
+
+    provides com.example.mylibrary.MyService with com.example.mylibrary.MyServiceImpl;
+}
+
+module com.example.myapp {
+    requires com.example.mylibrary;
+    uses com.example.mylibrary.MyService;
+}
+
+
+
+Limitations:
+
+Backward Compatibility: Legacy code that wasn't designed with modularization in mind may require refactoring.
+
+Complexity: For smaller applications, the added complexity of defining modules may not always be beneficial.
+
+
+Summary:
+
+Java modules, introduced in Java 9, allow for the grouping of related packages and resources.
+
+The module-info.java file defines the dependencies (requires), exposed packages (exports), and services (provides/uses) of a module.
+
+Modules improve encapsulation, reduce memory footprint, and make large applications easier to maintain and understand.
+
+The Java Platform Module System (JPMS) brings modularity to both applications and the JDK itself, allowing for the creation of custom runtimes with only necessary components.
+
+
+Ternary Opera
+The ternary operator in Java is a shorthand for the if-else statement. It allows you to write a simple conditional statement in a single line. It is also known as the conditional operator because it operates based on a condition.
+
+Syntax:
+
+condition ? expression1 : expression2;
+
+condition: A boolean expression that evaluates to true or false.
+
+expression1: The value returned if the condition is true.
+
+expression2: The value returned if the condition is false.
+
+
+Example:
+
+int number = 5;
+
+// Using ternary operator to assign a value based on the condition
+String result = (number > 0) ? "Positive" : "Negative";
+
+System.out.println(result);  // Output: Positive
+
+In this example, if number > 0 is true, the value "Positive" will be assigned to the result variable. Otherwise, "Negative" will be assigned.
+
+Breakdown:
+
+Condition: number > 0
+
+If true: "Positive"
+
+If false: "Negative"
+
+
+More Examples:
+
+1. Using with integers:
+
+int a = 10;
+int b = 20;
+
+int max = (a > b) ? a : b;  // Get the maximum of two numbers
+System.out.println("Max: " + max);  // Output: Max: 20
+
+2. Nesting ternary operators:
+
+You can nest ternary operators, but it can make the code harder to read. It’s generally better to avoid excessive nesting.
+
+int num = 0;
+String result = (num > 0) ? "Positive" : (num < 0) ? "Negative" : "Zero";
+System.out.println(result);  // Output: Zero
+
+Here, the ternary operator checks if num > 0 first, and if not, it checks if num < 0. If neither condition is met, it defaults to "Zero".
+
+Ternary Operator vs. if-else:
+
+The ternary operator is more concise than an if-else statement but should be used carefully when the logic is simple. For more complex conditions, an if-else block is preferred for better readability.
+
+if-else equivalent:
+
+if (number > 0) {
+    result = "Positive";
+} else {
+    result = "Negative";
+}
+
+Summary:
+
+The ternary operator is a shorthand for if-else statements in Java.
+
+Syntax: condition ? expression1 : expression2
+
+It is useful for simple conditions where the result of the condition is assigned to a variable.
+
+Nesting ternary operators is possible but can lead to less readable code.
+
+Spread  operator
+Java does not have a spread operator like JavaScript, which is used to expand an array or object into individual elements. However, you can achieve similar behavior in Java using existing features like varargs (variable-length arguments), arrays, or collections.
+
+1. Varargs in Java (Similar to Spread for Function Arguments)
+
+In Java, you can use varargs (...) to pass a variable number of arguments to a method. This can be considered a close equivalent to the spread operator when passing multiple arguments.
+
+Example:
+
+public class Main {
+    public static void main(String[] args) {
+        printNumbers(1, 2, 3, 4, 5);  // Similar to spreading elements
+    }
+
+    // Method using varargs
+    public static void printNumbers(int... numbers) {
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+    }
+}
+
+In this example, the printNumbers() method can accept any number of integers, similar to how the spread operator in JavaScript allows expanding elements into individual arguments.
+
+2. Using Arrays in Java
+
+Java arrays can be used in combination with methods that accept variable arguments. For example, you can "spread" an array when passing it to a varargs method using the array's reference.
+
+Example:
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3, 4, 5};
+       
+        // Passing an array to a varargs method
+        printNumbers(numbers); // Works like spreading the array into individual elements
+    }
+
+    public static void printNumbers(int... numbers) {
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+    }
+}
+
+This way, you can achieve something similar to the spread operator by passing the array as a list of arguments to a method that accepts varargs.
+
+3. Collections in Java
+
+If you are working with collections like List or Set, you can use their methods to achieve spread-like behavior, though this involves converting the collections rather than using a spread operator directly.
+
+Example with List:
+
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+       
+        // Convert List to Array to "spread" in a varargs method
+        printNumbers(numbers.toArray(new Integer[0]));
+    }
+
+    public static void printNumbers(Integer... numbers) {
+        for (int num : numbers) {
+            System.out.println(num);
+        }
+    }
+}
+
+In this case, we convert a List to an array using toArray(), which is then passed to a varargs method. This is similar to spreading an array into individual elements, as done with the spread operator in JavaScript.
+
+Key Points:
+
+Java does not have a spread operator, but varargs (...) provide similar functionality for passing a variable number of arguments to a method.
+
+Arrays and collections (like List) can be passed to varargs methods, simulating a spread-like behavior.
+
+For methods, using varargs allows you to pass an arbitrary number of arguments, behaving similarly to how the spread operator works in other languages.
+
+
+Example Recap:
+
+1. Varargs simulate the spread operator for function arguments.
+
+
+2. Arrays can be "spread" into a varargs method.
+
+
+3. Collections can be converted to arrays and passed to varargs methods.
+
+
+
+This makes Java capable of achieving similar functionality to what the spread operator offers in other languages, although the syntax is different. 
